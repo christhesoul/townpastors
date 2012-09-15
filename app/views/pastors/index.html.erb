@@ -1,0 +1,12 @@
+<table>
+	<tr>
+		<th>Email</th>
+		<th>Registered on</th>
+	<tr>
+	<% @pastors.each do |pastor| %>
+	<tr>
+		<td><%= pastor.email %></td>
+		<td><%= pastor.created_at %></td>
+	</tr>
+	<% end %>
+</table>

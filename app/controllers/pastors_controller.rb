@@ -12,4 +12,8 @@ class PastorsController < ApplicationController
       render "new"
     end
   end
+  
+  def index
+    @pastors = Pastor.all
+  end
 end

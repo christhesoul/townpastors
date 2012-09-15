@@ -1,0 +1,23 @@
+<h1>Listing patrols</h1>
+
+<table class="table">
+  <tr>
+    <th>Date</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @patrols.each do |patrol| %>
+  <tr>
+    <td><%= l patrol.date %></td>
+    <td><%= link_to 'Details', patrol %></td>
+    <td><%= link_to 'Edit', edit_patrol_path(patrol) %></td>
+    <td><%= link_to 'Destroy', patrol, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Patrol', new_patrol_path %>
