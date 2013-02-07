@@ -1,6 +1,6 @@
 class Pastor < ActiveRecord::Base
   has_secure_password
-  has_many_and_belongs_to :patrols
+  has_and_belongs_to_many :patrols
   
   attr_accessible :email, :password, :password_confirmation
   

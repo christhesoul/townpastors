@@ -6,9 +6,9 @@ class SessionsController < ApplicationController
     pastor = Pastor.find_by_email(params[:email])
     if pastor && pastor.authenticate(params[:password])
       session[:pastor_id] = pastor.id
-      redirect_to root_url, notice: "Logged in!"
+      redirect_to patrols_url, notice: "Logged in!"
     else
-      flash.now.alert = "Email or password invalid!"
+      flash.now[:error] = "Email or password invalid!"
       render "new"
     end
   end
