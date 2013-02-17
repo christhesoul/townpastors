@@ -14,7 +14,7 @@
 		    <a class="brand" href="#">Town Pastors</a>
 		    <ul class="nav">
 		      <li><%= link_to 'Pastors',pastors_path %></li>
-		      <li><%= link_to 'Patrols',patrols_path %></li>
+					<li><%= link_to 'Patrols',patrols_path %></li>
 		    </ul>
 		  </div>
 		</div>
@@ -28,7 +28,15 @@
 			<%= link_to "Log In", login_path %>
 		<% end %>
 	</div>
-
+	
+	<% flash.each do |name, msg| %>
+		<% if name.to_s == "alert" %>
+			<%= content_tag :div, msg, class: "alert alert-error" %>
+		<% else %>
+			<%= content_tag :div, msg, class: "alert alert-success" %>
+		<% end %>
+	<% end %>
+	
 	<%= yield %>
 	</div>
 </body>

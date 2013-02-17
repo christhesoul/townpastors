@@ -1,23 +1,12 @@
-<h1>Listing patrols</h1>
-
-<table class="table">
-  <tr>
-    <th>Date</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
 <% @patrols.each do |patrol| %>
-  <tr>
-    <td><%= l patrol.date %></td>
-    <td><%= link_to 'Details', patrol %></td>
-    <td><%= link_to 'Edit', edit_patrol_path(patrol) %></td>
-    <td><%= link_to 'Destroy', patrol, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
+	<% status = @shifts.where(:patrol_id => patrol.id).exists? ? @shifts.where(:patrol_id => patrol.id).first.status : nil %>
+
+	<%= form_for(@shift) do |f| %>
+		<div class="row">
+			<div class="span4"><%= patrol.patrol.strftime("%A %d %B %Y") %></div>
+			<div class="span4"><%= status %></div>
+			<div class="span4"><%= submit_tag("I'm available") %></div>
+			<%= f.hidden_field :patrol_id, :value => patrol.id %>
+		</div>
+	<% end %>
 <% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Patrol', new_patrol_path %>

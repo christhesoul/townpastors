@@ -1,8 +1,7 @@
 class CreatePatrols < ActiveRecord::Migration
   def change
     create_table :patrols do |t|
-      t.date :date
-
+      t.date :patrol
       t.timestamps
     end
   end
