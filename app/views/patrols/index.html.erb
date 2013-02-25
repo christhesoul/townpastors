@@ -1,7 +1,5 @@
 <% @patrols.each do |patrol| %>
-	<% status = @shifts.where(:patrol_id => patrol.id).exists? ? @shifts.where(:patrol_id => patrol.id).first.status : nil %>
-	
-	<% @shift = Shift.where(:pastor_id == current_pastor.id).find_or_create_by_patrol_id(patrol.id) %>
+	<% @shift = Shift.find_or_create_by_patrol_id_and_pastor_id(patrol.id,current_pastor.id) %>
 	<%= form_for(@shift) do |f| %>
 		<div class="row">
 			<div class="span4"><%= patrol.patrol.strftime("%A %d %B %Y") %></div>
