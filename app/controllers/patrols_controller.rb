@@ -16,7 +16,6 @@ class PatrolsController < ApplicationController
   def index
     if current_pastor
       @patrols = Patrol.all
-      @shift = Shift.new
       @shifts = Shift.where(:pastor_id => current_pastor.id)
       @responded_to_shifts = @shifts.pluck(:patrol_id)
     else
