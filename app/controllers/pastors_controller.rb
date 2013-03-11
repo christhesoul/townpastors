@@ -7,6 +7,8 @@ class PastorsController < ApplicationController
     @pastor = Pastor.new(params[:pastor])
     if @pastor.save
       session[:pastor_id] = @pastor.id
+      #send email
+      PastorMailer.signup_confirmation(@pastor).deliver
       redirect_to patrols_url, notice: "Thank you for signing up!"
     else
       render "new"
