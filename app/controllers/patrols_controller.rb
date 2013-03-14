@@ -23,4 +23,8 @@ class PatrolsController < ApplicationController
     end
   end
   
+  def show
+    @patrol = Patrol.find(params[:id])
+  end
+  
 end

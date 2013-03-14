@@ -1,4 +1,5 @@
 class PastorMailer < ActionMailer::Base
+  layout 'townpastors_email'
   default from: "app@townpastorslowestoft.org.uk"
 
   # Subject can be set in your I18n file at config/locales/en.yml

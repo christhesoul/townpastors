@@ -1,0 +1,18 @@
+<%= @patrol.patrol %>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Pastor</th>
+      <th>Availability</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @patrol.shifts.each do |shift| %>
+      <tr class="<%= 'success' if shift.status == 'available' %>">
+        <td><%= shift.pastor.email %></td>
+        <td><%= shift.status ? shift.status : 'not yet responded' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

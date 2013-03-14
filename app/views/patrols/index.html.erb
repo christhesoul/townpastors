@@ -2,7 +2,7 @@
 	<% @shift = Shift.find_or_create_by_patrol_id_and_pastor_id(patrol.id,current_pastor.id) %>
 	<%= form_for(@shift) do |f| %>
 		<div class="row">
-			<div class="span4"><%= patrol.patrol.strftime("%A %d %B %Y") %></div>
+			<div class="span4"><%= link_to patrol.patrol.strftime("%A %d %B %Y"), patrol_path(patrol) %></div>
 			<div class="span3">
 				<label class="radio">
 				  <%= f.radio_button "status","available" %>
