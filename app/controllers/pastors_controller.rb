@@ -6,7 +6,7 @@ class PastorsController < ApplicationController
   def create
     @pastor = Pastor.new(params[:pastor])
     if @pastor.save
-      session[:pastor_id] = @pastor.id
+      cookies[:auth_token] = @pastor.auth_token
       #send email
       PastorMailer.signup_confirmation(@pastor).deliver
       redirect_to patrols_url, notice: "Thank you for signing up!"

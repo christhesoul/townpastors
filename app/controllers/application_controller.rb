@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
 private
 
   def current_pastor
-    @current_pastor ||= Pastor.find(session[:pastor_id]) if session[:pastor_id]
+    @current_pastor ||= Pastor.find_by_auth_token!(cookies[:auth_token]) if cookies[:auth_token]
   end
   helper_method :current_pastor
   

@@ -3,6 +3,7 @@ TownPastors::Application.routes.draw do
   resources :sessions
   resources :patrols
   resources :shifts
+  resources :password_resets
   get 'signup', to: 'pastors#new', as: 'signup'
   get 'login', to: 'sessions#new', as: 'login'
   get 'logout', to: 'sessions#destroy', as: 'logout'

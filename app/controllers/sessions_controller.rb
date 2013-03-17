@@ -5,7 +5,11 @@ class SessionsController < ApplicationController
   def create
     pastor = Pastor.find_by_email(params[:email])
     if pastor && pastor.authenticate(params[:password])
-      session[:pastor_id] = pastor.id
+      if params[:remember_me]
+        cookies.permanent[:auth_token] = pastor.auth_token
+      else
+        cookies[:auth_token] = pastor.auth_token
+      end
       redirect_to patrols_url, notice: "Logged in!"
     else
       flash.now[:error] = "Email or password invalid!"
@@ -14,7 +18,7 @@ class SessionsController < ApplicationController
   end
   
   def destroy
-    session[:pastor_id] = nil
+    cookies.delete(:auth_token)
     redirect_to root_url, notice: "Logged out!"
   end
   

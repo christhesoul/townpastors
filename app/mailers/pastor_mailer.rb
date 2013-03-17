@@ -11,4 +11,9 @@ class PastorMailer < ActionMailer::Base
     @pastor = pastor
     mail to: pastor.email, subject: "Welcome to Town Pastors"
   end
+  
+  def password_reset(pastor)
+    @pastor = pastor
+    mail to: pastor.email, subject: "Password reset for Town Pastors"
+  end
 end
