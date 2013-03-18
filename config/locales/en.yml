@@ -6,7 +6,3 @@ en:
   date:
     formats:
       default: "%A %d %B %Y"
-  activerecord:
-    attributes:
-      pastor:
-        password_digest: "Password"

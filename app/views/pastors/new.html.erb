@@ -3,11 +3,14 @@
 
 <%= form_for @pastor, :html => { :class => "form-horizontal" } do |f| %>
   <% if @pastor.errors.any? %>
-    <div class="alert alert-error">
-      <% @pastor.errors.full_messages.each do |message| %>
-        <%= message %><br>
-			<% end %>
-    </div>
+    <% @pastor.errors.delete(:password_digest) %>
+    <% if @pastor.errors.any? %>
+      <div class="alert alert-error">
+        <% @pastor.errors.full_messages.each do |message| %>
+          <%= message %><br>
+  			<% end %>
+      </div>
+    <% end %>
   <% end %>
 	
 	<div class="control-group">

@@ -1,6 +1,7 @@
 class Pastor < ActiveRecord::Base
-  attr_accessible :email, :password, :password_confirmation
   has_secure_password
+  attr_accessible :email, :password, :password_confirmation
+  validates_presence_of :password
   validates_uniqueness_of :email
   before_create { generate_token(:auth_token) }
   
@@ -10,7 +11,7 @@ class Pastor < ActiveRecord::Base
   def send_password_reset
     generate_token(:password_reset_token)
     self.password_reset_sent_at = Time.zone.now
-    save!
+    save!(:validate => false)
     PastorMailer.password_reset(self).deliver
   end
   
